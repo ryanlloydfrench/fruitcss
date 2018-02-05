@@ -1,0 +1,7 @@
+//
+// Display
+//
+
+@each $exp in get-expressions((0, 1, 2), length($grid-breakpoints)) {
+  @debug $exp;
+}
