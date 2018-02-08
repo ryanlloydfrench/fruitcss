@@ -2,12 +2,47 @@
 // Mixins
 //
 
+
+//
+// Minimum breakpoint width. Null for the smallest (first) breakpoint.
+//
+//    >> breakpoint-min(sm, (xs: 0, sm: 576px, md: 768px, lg: 992px, xl: 1200px))
+//    576px
+//
+
+@function breakpoint-min($name, $breakpoints: $grid-breakpoints) {
+  $min: map-get($breakpoints, $name);
+  @return if($min != 0, $min, null);
+}
+
+
+//
+// Media of at least the minimum breakpoint width. No query for the smallest breakpoint.
+// Makes the @content apply to the given breakpoint and wider.
+//
+
+@mixin media-breakpoint-up($name, $breakpoints: $grid-breakpoints) {
+  $min: breakpoint-min($name, $breakpoints);
+  @if $min {
+    @media (min-width: $min) {
+      @content;
+    }
+  } @else {
+    @content;
+  }
+}
+
+
 @mixin make-utility($util-name, $prop, $exp) {
-  .#{$util-name}\(#{$exp}\) {
+  .#{$util-name}\(#{-f-expression($exp)}\) {
     #{$prop}: nth($exp, 1) !important;
 
-    @each $breakpoint in $grid-breakpoints {
-      //
+    @for $i from 2 through length($exp) {
+      @if nth($exp, $i) != null {
+        @include media-breakpoint-up(nth(map-keys($grid-breakpoints), $i)) {
+          #{$prop}: nth($exp, $i) !important;
+        }
+      }
     }
   }
 }
