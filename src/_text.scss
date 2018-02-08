@@ -1,0 +1,9 @@
+//
+// Text
+//
+
+$text: left right center justify;
+
+@each $exp in -f-expressions($text, length($grid-breakpoints)) {
+  @include make-utility(text, text-align, $exp);
+}
