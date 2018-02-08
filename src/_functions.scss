@@ -1,5 +1,10 @@
 //
-// Get expressions
+// Functions
+//
+
+
+//
+// Generate a list of expressions
 //
 // @param {List} $values
 // @param {Number} $breakpoints
@@ -7,16 +12,40 @@
 // @param {List} $curr
 // @return {List}
 //
-@function get-expressions($values, $breakpoints, $pool: (), $curr: ()) {
+
+@function -f-expressions($values, $breakpoints, $pool: (), $curr: ()) {
   @if $breakpoints == 0 {
     $pool: append($pool, $curr);
   } @elseif $breakpoints > 0 {
-    @for $i from 1 through length($values) {
-      $pool: get-expressions($values, $breakpoints - 1, $pool, append($curr, nth($values, $i)));
+    @each $value in $values {
+      @if length($curr) > 0 and $value == -f-last($curr) {
+        $value: null;
+      }
+      $pool: -f-expressions($values, $breakpoints - 1, $pool, append($curr, $value));
     }
   }
   @return $pool;
 }
+
+
+//
+// Get the last item from `$list`
+//
+// @param {List} $list
+// @param {String} $exception
+// @return {String}
+//
+
+@function -f-last($list: (), $exception: null) {
+  $i: length($list);
+  @while $i > 0 {
+    @if nth($list, $i) != $exception {
+      @return nth($list, $i);
+    }
+    $i: $i - 1;
+  }
+}
+
 
 //
 // Replace `$search` with `$replace` in `$string`
@@ -27,6 +56,7 @@
 // @param {String} $replace ("") - New value
 // @return {String} - Updated string
 //
+
 @function str-replace($string, $search, $replace: "") {
   $index: str-index($string, $search);
 
