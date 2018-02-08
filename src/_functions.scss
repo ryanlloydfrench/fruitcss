@@ -4,6 +4,22 @@
 
 
 //
+// Return a CSS-ready version of `$exp`
+//
+// @param {List} $exp
+// @return {String}
+//
+
+@function -f-expression($exp) {
+  $exp: -f-join($exp, ".");
+  $exp: -f-trim-right($exp, ".");
+  $exp: str-replace($exp, ".", "\\.");
+
+  @return $exp;
+}
+
+
+//
 // Generate a list of expressions
 //
 // @param {List} $values
@@ -29,6 +45,27 @@
 
 
 //
+// Join all list items into a string
+//
+// @param {List} $list
+// @param {String} $separator
+// @return {String}
+//
+
+@function -f-join($list, $separator: "") {
+  $result: nth($list, 1);
+
+  @if length($list) > 1 {
+    @for $i from 2 through length($list) {
+      $result: $result + $separator + "#{nth($list, $i)}";
+    }
+  }
+
+  @return $result;
+}
+
+
+//
 // Get the last item from `$list`
 //
 // @param {List} $list
@@ -36,7 +73,7 @@
 // @return {String}
 //
 
-@function -f-last($list: (), $exception: null) {
+@function -f-last($list, $exception: null) {
   $i: length($list);
   @while $i > 0 {
     @if nth($list, $i) != $exception {
@@ -44,6 +81,22 @@
     }
     $i: $i - 1;
   }
+}
+
+
+//
+// Trim whitespace from the end of `$string`
+//
+// @param {String} $string
+// @param {String} $char
+// @return {String}
+//
+
+@function -f-trim-right($string, $char: " ") {
+  @if str-slice($string, -1) == $char {
+    @return -f-trim-right(str-slice($string, 1, -2), $char);
+  }
+  @return $string;
 }
 
 
