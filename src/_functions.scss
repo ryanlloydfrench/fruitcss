@@ -37,7 +37,7 @@
     $pool: append($pool, $curr);
   } @elseif $breakpoints > 0 {
     @each $value in $values {
-      @if $value and $value == -f-last($curr) {
+      @if $value == -f-last($curr) {
         $value: null;
       }
       $pool: -f-expressions($values, $breakpoints - 1, $pool, append($curr, $value));
