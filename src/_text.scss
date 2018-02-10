@@ -2,37 +2,8 @@
 // Text
 //
 
-$text: left right;
+$text: left right center;
 
-@each $exp in -f-expressions($text, 3) {
+@each $exp in -f-expressions($text, length($grid-breakpoints)) {
   @include make-utility(text, text-align, $exp);
-  // @debug $exp;
 }
-
-// 000 / text(left)
-// 001 / text(left..right)
-// 002 / text(left..center)
-// 010 / text(left.right.left)
-// 011 / text(left.right)
-// 012 / text(left.right.center)
-// 020 / text(left.center.left)
-// 021 / text(left.center.right)
-// 022 / text(left.center)
-// 100 / text(right.left)
-// 101 / text(right.left.right)
-// 102 / text(right.left.center)
-// 110 / text(right..left)
-// 111 / text(right)
-// 112 / text(right..center)
-// 120 / text(right.center.left)
-// 121 / text(right.center.right)
-// 122 / text(right.center)
-// 200 / text(center.left)
-// 201 / text(center.left.right)
-// 202 / text(center.left.center)
-// 210 / text(center.right.left)
-// 211 / text(center.right)
-// 212 / text(center.right.center)
-// 220 / text(center..left)
-// 221 / text(center..right)
-// 222 / text(center)

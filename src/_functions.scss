@@ -31,9 +31,9 @@
 
 @function -f-expressions($values, $breakpoints, $pool: (), $curr: ()) {
   @if $curr == () {
-    $values: join(#{"null"}, $values);
+    $values: join(null, $values);
   }
-  @if $breakpoints == 0 {
+  @if $breakpoints == 0 and str-length("#{$curr}") != 0 and not index($pool, $curr) {
     $pool: append($pool, $curr);
   } @elseif $breakpoints > 0 {
     @each $value in $values {
@@ -60,7 +60,7 @@
 
   @if length($list) > 1 {
     @for $i from 2 through length($list) {
-      $result: $result + $separator + "#{nth($list, $i)}";
+      $result: "#{$result}" + $separator + "#{nth($list, $i)}";
     }
   }
 
@@ -78,15 +78,13 @@
 
 @function -f-last($list, $exception: null) {
   $i: length($list);
-  @if $i == 0 {
-    @return null;
-  }
   @while $i > 0 {
     @if nth($list, $i) != $exception {
       @return nth($list, $i);
     }
     $i: $i - 1;
   }
+  @return null;
 }
 
 
