@@ -7,7 +7,7 @@ const selectors = content.match(/[a-z0-9-(.)]+/g);
 */
 
 module.exports = {
-  class_list() {
+  _f_class_list() {
     const arr = ['m(.1..3)', 'text(left...center)'];
     const list = new sass.types.List(arr.length);
 
