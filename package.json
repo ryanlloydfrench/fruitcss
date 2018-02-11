@@ -4,14 +4,13 @@
   "description": "Smart, responsive utility classes.",
   "main": "index.js",
   "scripts": {
-    "build": "node-sass src/index.scss dist/main.css",
-    "dev": "node-sass --watch src/index.scss dist/main.css"
+    "build": "node-sass --functions src/_functions.scss.js src/index.scss dist/main.css",
+    "dev": "node-sass --watch --functions src/_functions.scss.js src/index.scss dist/main.css"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "node-sass": "^4.7.2",
-    "purgecss": "^0.20.0"
+    "node-sass": "^4.7.2"
   }
 }

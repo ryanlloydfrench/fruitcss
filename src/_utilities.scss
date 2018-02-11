@@ -1,0 +1,3 @@
+@each $class-name in class-list() {
+  @debug $class-name;
+}
