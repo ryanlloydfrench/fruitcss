@@ -11,7 +11,7 @@
 //
 
 @function -f-expression($exp) {
-  $exp: -f-join($exp, ".");
+  $exp: -f-join($exp);
   $exp: -f-trim-right($exp, ".");
   $exp: str-replace($exp, ".", "\\.");
 

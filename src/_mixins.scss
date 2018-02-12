@@ -35,10 +35,11 @@
 
 @mixin make-utility($util-name, $prop, $exp) {
   .#{$util-name}\(#{-f-expression($exp)}\) {
-    #{$prop}: nth($exp, 1) !important;
-
+    @if nth($exp, 1) != "." {
+      #{$prop}: nth($exp, 1) !important;
+    }
     @for $i from 2 through length($exp) {
-      @if nth($exp, $i) != null {
+      @if nth($exp, $i) != "." {
         @include media-breakpoint-up(nth(map-keys($grid-breakpoints), $i)) {
           #{$prop}: nth($exp, $i) !important;
         }
