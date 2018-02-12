@@ -6,19 +6,12 @@ $utilities: (
   text: text-align
 );
 
-@function -f-exp($class-name) {
-  @return str-slice($class-name, str-index($class-name, "(") + 1, -2);
-}
-
-@function -f-split($string, $delimiter: "") {
-  @return $string;
-}
-
-@mixin make-class($class-name) {
-  $list: -f-split(-f-exp($class-name), ".");
-  @debug $list;
-}
-
 @each $class-name in -f-class-list() {
-  @include make-class($class-name);
+  $util: -f-util($class-name);
+  $prop: map-get($utilities, $util);
+  $exp: -f-exp($class-name);
+
+  // @include make-utility($util, $prop, $exp);
+
+  @debug $exp;
 }

@@ -16,5 +16,19 @@ module.exports = {
     }
 
     return list;
+  },
+
+  _f_util($class_name) {
+    const className = $class_name.getValue();
+    const util = className.substring(0, className.indexOf('('));
+
+    return new sass.types.String(util);
+  },
+
+  _f_exp($class_name) {
+    const className = $class_name.getValue();
+    const exp = className.slice(className.indexOf('(') + 1, -1);
+
+    return new sass.types.String(exp);
   }
 };
