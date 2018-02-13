@@ -8,7 +8,7 @@ const selectors = content.match(/[a-z0-9-(.)]+/g);
 
 module.exports = {
   _f_class_list() {
-    const arr = ['m(.1..3)', 'm(.1..3)', 'text(left...center)', 'd(none...flex)']; // Figure this shit out
+    const arr = [...new Set(['m(.1..3)', 'text(left...center)'])];
     const $class_list = new sass.types.List(arr.length);
 
     for (i = 0; i < arr.length; i++) {
@@ -27,12 +27,7 @@ module.exports = {
 
   _f_exp($class_name) {
     const className = $class_name.getValue();
-    const exp = className
-      .slice(className.indexOf('(') + 1, -1)
-      .replace(/\./g, ' . ')
-      .trim()
-      .replace(/\s\s/g, ' ')
-      .split(' ');
+    const exp = className.slice(className.indexOf('(') + 1, -1).split('.');
     const $exp = new sass.types.List(exp.length);
 
     for (i = 0; i < exp.length; i++) {

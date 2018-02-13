@@ -11,7 +11,5 @@ $utilities: (
   $prop: map-get($utilities, $util);
   $exp: -f-exp($class-name);
 
-  // @include make-utility($util, $prop, $exp);
-
-  @debug $exp;
+  @include make-utility($util, $prop, $exp);
 }
