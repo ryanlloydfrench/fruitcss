@@ -9,7 +9,7 @@ $utilities: (
 @each $class-name in -f-class-list() {
   $util: -f-util($class-name);
   $prop: map-get($utilities, $util);
-  $exp: -f-exp($class-name);
+  $exp: -f-exp-list($class-name);
 
   @include make-utility($util, $prop, $exp);
 }
