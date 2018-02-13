@@ -29,22 +29,22 @@
 // @return {List}
 //
 
-@function -f-expressions($values, $breakpoints, $pool: (), $curr: ()) {
-  @if $curr == () {
-    $values: join(null, $values);
-  }
-  @if $breakpoints == 0 and str-length("#{$curr}") != 0 and not index($pool, $curr) {
-    $pool: append($pool, $curr);
-  } @elseif $breakpoints > 0 {
-    @each $value in $values {
-      @if $value == -f-last($curr) {
-        $value: null;
-      }
-      $pool: -f-expressions($values, $breakpoints - 1, $pool, append($curr, $value));
-    }
-  }
-  @return $pool;
-}
+// @function -f-expressions($values, $breakpoints, $pool: (), $curr: ()) {
+//   @if $curr == () {
+//     $values: join(null, $values);
+//   }
+//   @if $breakpoints == 0 and str-length("#{$curr}") != 0 and not index($pool, $curr) {
+//     $pool: append($pool, $curr);
+//   } @elseif $breakpoints > 0 {
+//     @each $value in $values {
+//       @if $value == -f-last($curr) {
+//         $value: null;
+//       }
+//       $pool: -f-expressions($values, $breakpoints - 1, $pool, append($curr, $value));
+//     }
+//   }
+//   @return $pool;
+// }
 
 
 //
@@ -76,16 +76,16 @@
 // @return {String}
 //
 
-@function -f-last($list, $exception: null) {
-  $i: length($list);
-  @while $i > 0 {
-    @if nth($list, $i) != $exception {
-      @return nth($list, $i);
-    }
-    $i: $i - 1;
-  }
-  @return null;
-}
+// @function -f-last($list, $exception: null) {
+//   $i: length($list);
+//   @while $i > 0 {
+//     @if nth($list, $i) != $exception {
+//       @return nth($list, $i);
+//     }
+//     $i: $i - 1;
+//   }
+//   @return null;
+// }
 
 
 //
