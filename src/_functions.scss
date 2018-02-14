@@ -4,122 +4,24 @@
 
 
 //
-// Return a CSS-ready version of `$exp`
+// Utility
 //
-// @param {List} $exp
+// @param  {String} $class-name
 // @return {String}
 //
 
-@function -f-expression($exp) {
-  $exp: -f-join($exp, ".");
-  $exp: -f-trim-right($exp, ".");
-  $exp: str-replace($exp, ".", "\\.");
-
-  @return $exp;
+@function -f-util($class-name) {
+  @return str-slice($class-name, 1, str-index($class-name, "(") - 1);
 }
 
 
 //
-// Generate a list of expressions
+// Expression
 //
-// @param {List} $values
-// @param {Number} $breakpoints
-// @param {List} $pool
-// @param {List} $curr
-// @return {List}
-//
-
-// @function -f-expressions($values, $breakpoints, $pool: (), $curr: ()) {
-//   @if $curr == () {
-//     $values: join(null, $values);
-//   }
-//   @if $breakpoints == 0 and str-length("#{$curr}") != 0 and not index($pool, $curr) {
-//     $pool: append($pool, $curr);
-//   } @elseif $breakpoints > 0 {
-//     @each $value in $values {
-//       @if $value == -f-last($curr) {
-//         $value: null;
-//       }
-//       $pool: -f-expressions($values, $breakpoints - 1, $pool, append($curr, $value));
-//     }
-//   }
-//   @return $pool;
-// }
-
-
-//
-// Join all list items into a string
-//
-// @param {List} $list
-// @param {String} $separator
+// @param  {String} $class-name
 // @return {String}
 //
 
-@function -f-join($list, $separator: "") {
-  $result: nth($list, 1);
-
-  @if length($list) > 1 {
-    @for $i from 2 through length($list) {
-      $result: "#{$result}" + $separator + "#{nth($list, $i)}";
-    }
-  }
-
-  @return $result;
-}
-
-
-//
-// Get the last item from `$list`
-//
-// @param {List} $list
-// @param {String} $exception
-// @return {String}
-//
-
-// @function -f-last($list, $exception: null) {
-//   $i: length($list);
-//   @while $i > 0 {
-//     @if nth($list, $i) != $exception {
-//       @return nth($list, $i);
-//     }
-//     $i: $i - 1;
-//   }
-//   @return null;
-// }
-
-
-//
-// Trim whitespace from the end of `$string`
-//
-// @param {String} $string
-// @param {String} $char
-// @return {String}
-//
-
-@function -f-trim-right($string, $char: " ") {
-  @if str-slice($string, -1) == $char {
-    @return -f-trim-right(str-slice($string, 1, -2), $char);
-  }
-  @return $string;
-}
-
-
-//
-// Replace `$search` with `$replace` in `$string`
-//
-// @author Hugo Giraudel
-// @param {String} $string - Initial string
-// @param {String} $search - Substring to replace
-// @param {String} $replace ("") - New value
-// @return {String} - Updated string
-//
-
-@function str-replace($string, $search, $replace: "") {
-  $index: str-index($string, $search);
-
-  @if $index {
-    @return str-slice($string, 1, $index - 1) + $replace + str-replace(str-slice($string, $index + str-length($search)), $search, $replace);
-  }
-
-  @return $string;
+@function -f-exp($class-name) {
+  @return str-slice($class-name, str-index($class-name, "(") + 1, -2);
 }
