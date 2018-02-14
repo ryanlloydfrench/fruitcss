@@ -6,13 +6,13 @@ Easy to digest, **responsive** utility classes.
 
 Turn this:
 
-```css
+```
 <h1 class="d-inline-block mb-0 mb-sm-1 mb-lg-3 text-center text-lg-left text-xl-right">Hard to read; bloated</h1>
 ```
 
 Into this:
 
-```css
+```
 <h1 class="d(inline-block) mb(0.1..3) text(center...left.right)">Ahhhh!! Much better 😎</h1>
 ```
 
