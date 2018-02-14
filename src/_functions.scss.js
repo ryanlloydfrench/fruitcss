@@ -24,32 +24,34 @@ module.exports = {
   },
 
   /**
-   * Util
+   * Split
    *
-   * @param  {SassString} $className [description]
-   * @return {SassString}
-   */
-  _f_util($className) {
-    const className = $className.getValue();
-    const util = className.substring(0, className.indexOf('('));
-
-    return new sass.types.String(util);
-  },
-
-  /**
-   * Exp list
-   *
-   * @param  {SassString} $className [description]
+   * @param  {SassString} $exp [description]
    * @return {SassList}
    */
-  _f_exp_list($className) {
-    const className = $className.getValue();
-    const expList = className.slice(className.indexOf('(') + 1, -1).split('.');
+  _f_split($string, $separator) {
+    const expList = $exp.getValue().split('.');
     const $expList = new sass.types.List(expList.length);
 
     for (i = 0; i < expList.length; i++) {
       $expList.setValue(i, new sass.types.String(expList[i]));
     }
     return $expList;
-  }
+  },
+
+  /**
+   * Join all list items into a string
+   *
+   * @param  {SassList}   $list
+   * @param  {SassString} $separator
+   * @return {SassString}
+   */
+  _f_join($list, $separator) {
+    const list = [];
+
+    for (i = 0; i < $list.getLength(); i++) {
+      list[i] = $list.getValue(i).getValue();
+    }
+    return new sass.types.String(list.join('\\.'));
+  },
 };
