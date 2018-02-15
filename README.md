@@ -22,5 +22,5 @@ Into this:
 git clone https://github.com/woro83c/fruit.git
 cd fruit
 yarn
-yarn dev
+yarn 🍉
 ```

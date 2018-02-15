@@ -1,11 +1,11 @@
 {
   "name": "fruit",
   "version": "1.0.0",
-  "description": "Smart, responsive utility classes.",
+  "description": "Easy to digest, responsive utility classes.",
   "main": "index.js",
   "scripts": {
     "build": "node-sass --functions src/_functions.scss.js src/index.scss dist/main.css",
-    "dev": "node-sass --watch --functions src/_functions.scss.js src/index.scss dist/main.css"
+    "🍉": "node-sass --watch --functions src/_functions.scss.js src/index.scss dist/main.css"
   },
   "keywords": [],
   "author": "",
