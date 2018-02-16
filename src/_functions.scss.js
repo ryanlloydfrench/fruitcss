@@ -1,3 +1,7 @@
+/**
+ * TODO: extract HTML classes
+ */
+
 const sass = require('node-sass');
 const fs = require('fs');
 
@@ -9,7 +13,7 @@ const selectors = content.match(/[a-z0-9-(.)]+/g);
 module.exports = {
 
   /**
-   * Class list
+   * Compile a list of classes from our HTML templates
    *
    * @return {SassList}
    */
@@ -24,23 +28,28 @@ module.exports = {
   },
 
   /**
-   * Split
+   * Provide JS's `split` method to SCSS files as a function
    *
-   * @param  {SassString} $exp [description]
+   * Splits a string into a `SassList`.
+   *
+   * @param  {SassString} $string
+   * @param  {SassString} $separator
    * @return {SassList}
    */
   _f_split($string, $separator) {
-    const expList = $exp.getValue().split('.');
-    const $expList = new sass.types.List(expList.length);
+    const list = $string.getValue().split($separator.getValue());
+    const $list = new sass.types.List(list.length);
 
-    for (i = 0; i < expList.length; i++) {
-      $expList.setValue(i, new sass.types.String(expList[i]));
+    for (i = 0; i < list.length; i++) {
+      $list.setValue(i, new sass.types.String(list[i]));
     }
-    return $expList;
+    return $list;
   },
 
   /**
-   * Join all list items into a string
+   * Provide JS's `join` method ...
+   *
+   * Joins all list items into a string.
    *
    * @param  {SassList}   $list
    * @param  {SassString} $separator
@@ -52,6 +61,6 @@ module.exports = {
     for (i = 0; i < $list.getLength(); i++) {
       list[i] = $list.getValue(i).getValue();
     }
-    return new sass.types.String(list.join('\\.'));
+    return new sass.types.String(list.join($separator.getValue()));
   },
 };

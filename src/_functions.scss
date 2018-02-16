@@ -4,19 +4,19 @@
 
 
 //
-// Utility
+// Get utility's prefix from class name
 //
 // @param  {String} $class-name
 // @return {String}
 //
 
-@function -f-util($class-name) {
+@function -f-prefix($class-name) {
   @return str-slice($class-name, 1, str-index($class-name, "(") - 1);
 }
 
 
 //
-// Expression
+// Get utility's expression from class name
 //
 // @param  {String} $class-name
 // @return {String}
