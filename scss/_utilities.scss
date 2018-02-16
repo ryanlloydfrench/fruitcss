@@ -3,11 +3,18 @@
 //
 
 $utilities: (
-  d:    display,
-  m:    margin,
-  p:    padding,
-  flex: flex-direction,
-  text: text-align
+  d:               display,
+  m:               margin,
+  p:               padding,
+  align:           vertical-align,
+  align-content:   align-content,
+  align-items:     align-items,
+  align-self:      align-self,
+  flex:            flex-direction,
+  float:           float,
+  justify-content: justify-content,
+  position:        position,
+  text:            text-align
 );
 
 @each $class-name in -f-class-list() {
