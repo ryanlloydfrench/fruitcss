@@ -34,7 +34,7 @@
 
 
 @mixin make-utility($util-name, $prop, $exp) {
-  .#{$util-name}\(#{-f-join($exp, "\\.")}\) {
+  .#{$util-name}\(#{-f-join($exp, "\\#{$separator}")}\) {
     @if nth($exp, 1) != "" {
       #{$prop}: nth($exp, 1) !important;
     }

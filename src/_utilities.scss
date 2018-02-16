@@ -1,15 +1,19 @@
+//
+// Utilities
+//
+
 $utilities: (
   d:    display,
-  flex: flex-direction,
   m:    margin,
   p:    padding,
+  flex: flex-direction,
   text: text-align
 );
 
 @each $class-name in -f-class-list() {
-  $util: -f-util($class-name);
-  $prop: map-get($utilities, $util);
+  $prefix: -f-prefix($class-name);
+  $prop: map-get($utilities, $prefix);
   $exp: -f-exp($class-name);
 
-  @include make-utility($util, $prop, -f-split($exp, "."));
+  @include make-utility($prefix, $prop, -f-split($exp, $separator));
 }
