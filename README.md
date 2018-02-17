@@ -19,8 +19,8 @@ Into this:
 ## quick start
 
 ```
-git clone https://github.com/woro83c/fruit.git
-cd fruit
+git clone https://github.com/woro83c/fruitcss.git
+cd fruitcss
 yarn
 yarn 🍉
 ```
