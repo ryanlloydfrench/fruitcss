@@ -1,6 +1,6 @@
 {
-  "name": "fruit",
-  "version": "1.0.0",
+  "name": "fruitcss",
+  "version": "0.1.0",
   "description": "Easy to digest, responsive utility classes.",
   "main": "index.js",
   "scripts": {
@@ -8,12 +8,12 @@
     "🍉": "node-sass --watch --functions js/functions.js scss/index.scss dist/main.css"
   },
   "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "devDependencies": {
-    "node-sass": "^4.7.2"
-  },
+  "author": "Michael Worobec <woro83c@gmail.com> (http://woro83c.com)",
+  "license": "MIT",
   "dependencies": {
     "glob": "^7.1.2"
+  },
+  "devDependencies": {
+    "node-sass": "^4.7.2"
   }
 }
