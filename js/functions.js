@@ -1,14 +1,6 @@
-/**
- * TODO: extract HTML classes
- */
-
 const sass = require('node-sass');
-const fs = require('fs');
-
-/*
-const content = fs.readFileSync('index.html', 'utf8');
-const selectors = content.match(/[a-z0-9-(.)]+/g);
-*/
+const { markup } = require('./defaultConfig');
+const extractUtils = require('./extractUtils');
 
 module.exports = {
 
@@ -18,11 +10,11 @@ module.exports = {
    * @return {SassList}
    */
   _f_class_list() {
-    const arr = [...new Set(['m(.1..3)', 'text(left...center)'])];
-    const $classList = new sass.types.List(arr.length);
+    const utils = extractUtils(markup);
+    const $classList = new sass.types.List(utils.length);
 
-    for (i = 0; i < arr.length; i++) {
-      $classList.setValue(i, new sass.types.String(arr[i]));
+    for (i = 0; i < utils.length; i++) {
+      $classList.setValue(i, new sass.types.String(utils[i]));
     }
     return $classList;
   },
