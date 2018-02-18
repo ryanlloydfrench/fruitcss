@@ -1,3 +1,3 @@
 module.exports = {
-  markup: ['**/*.html'],
+  markup: ['*.html', '!(node_modules|bower_components)/**/*.html'],
 };
