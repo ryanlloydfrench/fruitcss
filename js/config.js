@@ -5,7 +5,7 @@ const defaultConfig = require('./defaultConfig');
 module.exports = (() => {
   let config;
   try {
-    const t = path.join(process.cwd(), CONFIG_FILENAME);
+    const t = path.resolve(process.cwd(), CONFIG_FILENAME);
     config = require(t);
   } catch (err) {
     console.error(err);
