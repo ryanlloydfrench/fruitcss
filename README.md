@@ -40,7 +40,7 @@ Import fruitcss at the top of your main SCSS file.
 
 ## Configuration
 
-By default fruitcss will troll through your entire project's HTML for utility classes. You may want to configure this to search the contents of only certain directories and/or filetypes.
+By default, fruitcss will troll through your entire project's HTML for utility classes. You may want to configure this to search the contents of only certain directories and/or filetypes.
 
 You can do this by adding a config file in your project's root directory.
 
