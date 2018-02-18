@@ -1,4 +1,4 @@
-# 🍉 fruit
+# 🍉 fruitcss
 
 Easy to digest, **responsive** utility classes.
 
