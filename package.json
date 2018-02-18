@@ -1,6 +1,6 @@
 {
   "name": "fruitcss",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Easy to digest, responsive utility classes.",
   "main": "index.js",
   "scripts": {
