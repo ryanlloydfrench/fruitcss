@@ -4,8 +4,8 @@
   "description": "Easy to digest, responsive utility classes.",
   "main": "index.js",
   "scripts": {
-    "build": "node-sass --functions js/functions.js scss/index.scss dist/main.css",
-    "🍉": "node-sass --watch --functions js/functions.js scss/index.scss dist/main.css"
+    "build": "node-sass --functions js/functions scss/fruitcss.scss dist/main.css",
+    "🍉": "node-sass --watch --functions js/functions scss/fruitcss.scss dist/main.css"
   },
   "keywords": [],
   "author": "Michael Worobec <woro83c@gmail.com> (http://woro83c.com)",

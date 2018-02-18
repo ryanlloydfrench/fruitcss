@@ -1,5 +1,5 @@
 const sass = require('node-sass');
-const { markup } = require('./defaultConfig');
+const { markup } = require('./config');
 const extractUtils = require('./extractUtils');
 
 module.exports = {
