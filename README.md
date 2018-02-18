@@ -2,25 +2,40 @@
 
 Easy to digest, **responsive** utility classes.
 
-## what does it do?
+## Why?
 
-Turn this:
+This sucks:
 
-```
+```html
 <h1 class="d-inline-block mb-0 mb-sm-1 mb-lg-3 text-center text-lg-left text-xl-right">Hard to read; bloated</h1>
 ```
 
-Into this:
+This **doesn't** suck so much:
 
-```
+```html
 <h1 class="d(inline-block) mb(0.1..3) text(center...left.right)">Ahhhh!! Much better 😎</h1>
 ```
 
-## quick start
+## Quick start
+
+Install 🍌 **fruitcss** as a dev dependency.
 
 ```
-git clone https://github.com/woro83c/fruitcss.git
-cd fruitcss
-yarn
-yarn 🍉
+npm i -D fruitcss
+```
+
+Supply 🥝 **fruitcss functions** to your SCSS files with the [node-sass CLI](https://github.com/sass/node-sass#command-line-interface) functions flag.
+
+```
+node-sass --functions node_modules/fruitcss/js/functions <input> [output]
+```
+
+## Configuration
+
+By default 🍇 **fruitcss** will troll through your entire project's HTML for utility classes. You may want to configure this to search the contents of only certain directories and/or filetypes.
+
+```js
+module.exports = {
+  markup: ['templates/**/*.twig'] // Accepts an array of glob files
+}
 ```
