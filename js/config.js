@@ -1,5 +1,6 @@
+const chalk = require('chalk');
 const path = require('path');
-const { CONFIG_FILENAME } = require('./constants');
+const { CONFIG_FILENAME, WARN_CONFIG_NOT_FOUND } = require('./constants');
 const defaultConfig = require('./defaultConfig');
 
 module.exports = (() => {
@@ -7,8 +8,8 @@ module.exports = (() => {
   try {
     const t = path.resolve(process.cwd(), CONFIG_FILENAME);
     config = require(t);
-  } catch (err) {
-    console.error(err);
+  } catch (e) {
+    console.warn(chalk.yellow(WARN_CONFIG_NOT_FOUND));
   }
   return Object.assign(defaultConfig, config);
 })();
