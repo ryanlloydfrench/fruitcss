@@ -4,7 +4,7 @@ Easy to digest, **responsive** utility classes.
 
 ## What is fruitcss?
 
-Currently, it's a work in progress … what we want it to do though, is turn this:
+Currently, it's a work in progress. What we want it to do though, is turn this:
 
 ```html
 <!-- Hard to read; bloated -->
