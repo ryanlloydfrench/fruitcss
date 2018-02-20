@@ -2,18 +2,20 @@
 
 Easy to digest, **responsive** utility classes.
 
-## Why?
+## What is fruitcss?
 
-This sucks:
+Currently, it's a work in progress … what we want it to do though, is turn this:
 
 ```html
-<h1 class="d-inline-block mb-0 mb-sm-1 mb-lg-3 text-center text-lg-left text-xl-right">Hard to read; bloated</h1>
+<!-- Hard to read; bloated -->
+<div class="col-12 col-sm-6 col-md-4 col-lg-3 col-xl-2" />
 ```
 
-This **doesn't** suck so much:
+Into this:
 
 ```html
-<h1 class="d(inline-block) mb(0.1..3) text(center...left.right)">Ahhhh!! Much better 😎</h1>
+<!-- Ahhhh!! Much better! -->
+<div class="col(12.6.4.3.2)" />
 ```
 
 ## Quick start
