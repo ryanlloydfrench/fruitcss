@@ -1,17 +1,24 @@
 # 🍉 fruitcss
 
-Easy to digest, **responsive** utility classes.
+Easy to digest, **responsive** utility classes that are _on demand_.
 
 ## What is fruitcss?
 
-Currently, it's a work in progress. What we want it to do though, is turn this:
+Fruitcss is a utility library that does a couple of things really well:
+
+1. It frees your markup of bloat, allowing you to much better [visualise layout across breakpoints](https://github.com/woro83c/fruitcss#syntax)
+2. It frees up your compiled CSS from classes you don't use, e.g. [PurifyCSS](https://github.com/purifycss/purifycss), [Purgecss](https://github.com/FullHuman/purgecss)
+
+### Syntax
+
+Bootstrap.
 
 ```html
 <!-- Hard to read; bloated -->
 <div class="col-12 col-sm-6 col-md-4 col-lg-3 col-xl-2" />
 ```
 
-Into this:
+Fruitcss.
 
 ```html
 <!-- Ahhhh!! Much better! -->
